@@ -5,7 +5,3 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-require 'csv'
-CSV.foreach(Rails.root.join("db/beers.csv"), headers: true) do |row|
-  Beer.find_or_create_by(title: row[0], release: row[1], price: row[2], description: row[3], poster_url: row[4])
-end
