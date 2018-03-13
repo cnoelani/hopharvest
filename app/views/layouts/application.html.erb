@@ -8,21 +8,54 @@
 </head>
 <body>
 
- <% if user_signed_in? %>
-     <ul>
+ <nav class="navbar navbar-default" role="navigation">
+       
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               </button>
+              
+            <div id="navbar" class="navbar-collapse collapse">
+               <ul class="nav navbar-nav">
+                  <li><%= link_to('', '#') %></li>
+                  <li><%= link_to('', '#') %></li>
+                  <li><%= link_to('', '#') %></li>
+               </ul>
+               <ul class="nav navbar-nav navbar-left">
+                  <% if user_signed_in? %>
                   <li><%= link_to "account", edit_user_registration_path %></li>
-                  <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
-                  </ul>
-                  
-                  <% else %>
-                   <ul>
-                   <li><%= link_to "Sign Up", new_user_registration_path %></li>
-                  <li><%= link_to "Sign In", new_user_session_path %></li>
-                  </ul>
-                  
-                 <% end %> 
+                  <li><%= link_to "submit", new_submission_path %></li>
+                  <% end %>
+               </ul>
+               <ul class="nav navbar-nav navbar-right">
+                  <% if user_signed_in? %>
+                     <li><%= form_tag(submissions_path, :method => "get", id: "search-form") do %>
+                     <%= text_field_tag :search, params[:search], placeholder: "Search Submissions" %>
+                      <%= submit_tag "Search", :name => nil %><% end %></li>
+                	
+                		<li><%= link_to "logout", destroy_user_session_path, :method => :delete, data: { confirm: 'Are you sure?' } %></li>
+                	<% else %>
+                	   <li><%= form_tag(submissions_path, :method => "get", id: "search-form") do %>
+                     <%= text_field_tag :search, params[:search], placeholder: "Search Submissions" %>
+                     <%= submit_tag "Search", :name => nil %><% end %></li>
+                  	<li><%= link_to "login", new_user_session_path %></li>
+                  <% end %>
+               </ul>
+            </div>
+            <!--/.nav-collapse --> 
+           
+      
+      </nav>
+      <div id="main" class="container">
+         <% flash.each do |name, msg| %>
+         <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
+         <% end %>
+         <div id="container" class="center-block">
 
 <%= yield %>
-
+</div>
 </body>
 </html>

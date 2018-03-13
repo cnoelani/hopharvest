@@ -5,7 +5,8 @@ class SubmissionsController < ApplicationController
   # GET /submissions
   # GET /submissions.json
   def index
-    @submissions = Submission.all
+   # @submissions = Submission.all
+   @submissions = Submission.order(cached_votes_total: :desc)
   end
 
   # GET /submissions/1
@@ -57,10 +58,22 @@ class SubmissionsController < ApplicationController
   def destroy
     @submission.destroy
     respond_to do |format|
-      format.html { redirect_to submissions_url, notice: 'Submission was successfully destroyed.' }
+      format.html { redirect_to submissions_post, notice: 'Submission was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
+  
+def upvote
+  @submission = Submission.find(params[:id])
+  @submission.upvote_by current_user
+  redirect_back fallback_location: root_path
+end
+
+def downvote
+  @submission = Submission.find(params[:id])
+  @submission.downvote_by current_user
+  redirect_back fallback_location: root_path
+end
 
   private
     # Use callbacks to share common setup or constraints between actions.
