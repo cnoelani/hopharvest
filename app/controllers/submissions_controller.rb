@@ -5,8 +5,12 @@ class SubmissionsController < ApplicationController
   # GET /submissions
   # GET /submissions.json
   def index
-   # @submissions = Submission.all
-   @submissions = Submission.order(cached_votes_total: :desc)
+    @submissions = Submission.all
+  if params[:search]
+    @submissions = Submission.search(params[:search]).order("created_at DESC")
+  else
+    @submissions = Submission.all.order("created_at DESC")
+  end
   end
 
   # GET /submissions/1
@@ -62,7 +66,7 @@ class SubmissionsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
 def upvote
   @submission = Submission.find(params[:id])
   @submission.upvote_by current_user
@@ -75,6 +79,8 @@ def downvote
   redirect_back fallback_location: root_path
 end
 
+
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_submission
@@ -85,4 +91,7 @@ end
     def submission_params
       params.require(:submission).permit(:title, :post)
     end
+    
+  
+
 end
