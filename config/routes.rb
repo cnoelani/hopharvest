@@ -13,5 +13,6 @@ Rails.application.routes.draw do
     resources :comments
   end
   
-  root 'submissions#index'
+  root 'pages#main'
+  get  '/about', to: 'pages#about'
 end
