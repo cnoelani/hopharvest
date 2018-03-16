@@ -34,8 +34,8 @@ body {
     border-radius: 25px;
     -moz-border-radius: 25px;
     -webkit-border-radius: 25px;
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 40px;
     overflow: hidden;
     text-align: center;
     img { width: 100% }
@@ -106,7 +106,10 @@ a {
 }
 .navbar-wrapper .navbar .container {
   width: auto;
+  
 }
+
+
 
 // .navbar {
 //   border-radius: 0;
@@ -115,9 +118,9 @@ a {
 //   width: 100%;
 // }
 
-.navbar-default {
-  background-color: #e3c6fe;
-}
+// .navbar-default {
+//   background-color: #e3c6fe;
+// }
 // .navbar-default .navbar-nav li a {
 //   color: #FFF;
 //   padding: 0;
@@ -277,4 +280,17 @@ textarea.form-control {
 .navbar-brand>img {
 
  margin-top: -6px;
+}
+
+
+.jumbotron {
+  background-color: #232323;
+  margin-top: 100px;
+  text-align: center;
+  color: #c6c6c6;
+}
+
+
+.searchbar {
+
 }
