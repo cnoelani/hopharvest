@@ -3,18 +3,14 @@
     <% @submissions.each do |submission| %>
       <tr class="post">
         <td>
-          <%= link_to like_submission_path(submission), method: :put do %>
-            <i class="fa fa-caret-up fa-lg " aria-hidden="true"></i>
-          <% end %>
-          <%= link_to dislike_submission_path(submission), method: :put do %>
-            <i class="fa fa-caret-down fa-lg " aria-hidden="true"></i>
-          <% end %>
+         
 
-          <%= link_to submission.title, submission.post, class: "title" %>
-          <%= submission.post  %>
+          <%= link_to submission.title, submission, class: "title" %>
+          <%= time_ago_in_words(submission.created_at) %> ago
+          <!--<%= submission.post  %>-->
         </td>
         <tr class="post">
-          <td> <p><%= submission.get_upvotes.size %> points by <%= submission.user.email %> <%= time_ago_in_words(submission.created_at) %> ago | <%= link_to "#{submission.comments.count} comments", submission %> </p></td>
+          <td> <p>by <%= submission.user.name %> | <%= link_to "#{submission.comments.count} comments", submission %> </p></td>
         </tr>
         <% end %>
         <% if @submissions.blank? %>

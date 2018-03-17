@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   devise_for :admins
   resources :comments
   
@@ -15,4 +16,5 @@ Rails.application.routes.draw do
   
   root 'pages#main'
   get  '/about', to: 'pages#about'
+  get  '/blog', to: 'submissions#index'
 end

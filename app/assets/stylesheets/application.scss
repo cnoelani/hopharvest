@@ -15,6 +15,13 @@ body {
   padding-bottom: 40px;
 }
 
+.helper {
+  display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    
+}
+
 .round-image-50 {
     background-color: white;
     border: 1px solid #d9d9d9;
@@ -24,8 +31,10 @@ body {
     height: 30px;
     width: 30px;
     overflow: hidden;
-    text-align: center;
-    img { width: 100% }
+       margin-top: 10px;
+    img { width: 100%;
+ 
+    }
 }
 
 .avacomment {
@@ -59,6 +68,14 @@ a {
   color: #fff;
   font-size: 10px;
   font-style: italic;
+}
+
+.navbar-nav > li > .dropdown-menu {     background-color: #e7e7e7;  }
+
+.navbar-right > .dropdown-menu {    
+background-color: #e7e7e7; 
+min-width: 5%;
+  text-align: right;
 }
 
 /* CUSTOMIZE THE CAROUSEL
@@ -290,7 +307,59 @@ textarea.form-control {
   color: #c6c6c6;
 }
 
+.form-control input {
+    width:40px;
+}
 
-.searchbar {
+.accountcont {
+  padding-top: 30px;
+  margin-top: 100px;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  color: #c6c6c6;
+  text-align: center;
+  background-color: #232323;
+  width: 50%;
+  margin: auto;
+}
+.accountcont > input, select, textarea{
+    color: #000;
+}
 
+.accountcont h1,
+.accountcont .h1 {
+  color: inherit;
+}
+.accountcont p {
+  margin-bottom: 15px;
+  font-size: 21px;
+  font-weight: 200;
+}
+.accountcont > hr {
+  border-top-color: #d5d5d5;
+}
+.container accountcont,
+.container-fluid accountcont {
+  
+  padding-right: 15px;
+  padding-left: 15px;
+  border-radius: 6px;
+}
+.accountcont .container {
+  min-width: 100%;
+  margin-top: 20px;
+}
+@media screen and (min-width: 768px) {
+  .accountcont {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+  .container .accountcont,
+  .container-fluid .accountcont{
+    padding-right: 60px;
+    padding-left: 60px;
+  }
+  .accountcont h1,
+  .accountcont .h1 {
+    font-size: 63px;}
 }

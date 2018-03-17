@@ -35,7 +35,7 @@
       <div class="navbar-wrapper">
       <div class="container">
 
-        <nav class="navbar navbar-inverse navbar-static-top">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
           <div class="container">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -50,7 +50,6 @@
               <ul class="nav navbar-nav">
                 <li class="active"><%= link_to 'Home', root_path %></li>
                 <li><%= link_to "About", about_path %></li>
-                <li><a href="#contact">Contact</a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our Crafts<span class="caret"></span></a>
                   <ul class="dropdown-menu">
@@ -62,30 +61,25 @@
                     <li><a href="#">Newly Released</a></li>
                     <li><a href="#">Coming Soon</a></li>
                   </ul>
-                 <li><a href="#contact">Blog</a></li>
+                 <li><a href="#contact">Contact</a></li>
+                 <li><a href="/blog">Blog</a></li>
+              
                 </li>
               </ul>
               
-               <!--<ul class="nav navbar-nav navbar-left">-->
-               <!--   <% if user_signed_in? %>-->
-               <!--   <li><%= link_to "account", edit_user_registration_path %></li>-->
-               <!--   <li><%= link_to "submit", new_submission_path %></li>-->
-               <!--   <% end %>-->
-               <!--</ul>-->
-                   <ul class="nav navbar-nav navbar-center">
-                      <li><%= form_tag(submissions_path, :method => "get", id: "search-form") do %>
-                     <%= text_field_tag :search, params[:search], placeholder: "Search Submissions" %>
-                     <%= submit_tag "Search", :name => nil %><% end %></li>
-                     </ul>
-                     
+       
                 <ul class="nav navbar-nav navbar-right">
-                  
-                 
-                   
+     
+                  <!--<li><%= form_tag(submissions_path, :method => "get", id: "search-form") do %>-->
+                  <!--   <%= text_field_tag :search, params[:search], placeholder: "Search Submissions" %>-->
+                  <!--   <%= submit_tag "Search", :name => nil %><% end %></li>-->
+               
                 
-                  <% if user_signed_in? %>
-                	 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">		<li class="round-image-50"><%= image_tag(current_user.avatar.url(:thumb)) %></li><span class="input-group-text" id="basic-addon2">username here</span></a>
-                  <ul class="dropdown-menu">
+                    <% if user_signed_in? %>
+                <span class="helper"></span>	
+                	<li class="round-image-50"> <%= image_tag(current_user.avatar.url(:thumb)) %></li> 
+                  	<li class="active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= link_to current_user.name, root_path %></li>
+                  	 <ul class="dropdown-menu">
                      <% if user_signed_in? %>
                   <li><%= link_to "account", edit_user_registration_path %></li>
                   <li><%= link_to "submit", new_submission_path %></li>
@@ -97,6 +91,7 @@
                   	<li><%= link_to "login", new_user_session_path %></li>
                   <% end %>
                </ul>
+                       <!--</div> <!-- searchbar -->
             </div>
           </div>
         </nav>

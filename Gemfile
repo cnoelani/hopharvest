@@ -15,6 +15,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'simple_form'
 gem 'record_tag_helper', '~> 1.0'
 gem 'paperclip', '~> 4.1'
+gem 'ckeditor', '~> 4.1'
+gem 'tinymce-rails'
 
 group :development, :test do
   gem 'byebug',  '9.0.6', platform: :mri
